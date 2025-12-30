@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Natnael Feleke - Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-alt: #0b1020;
+      --card: #111827;
+      --accent: #38bdf8;
+      --accent-soft: rgba(56, 189, 248, 0.15);
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --border-subtle: rgba(148, 163, 184, 0.35);
+      --radius-xl: 18px;
+      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.75);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 45%, #000 100%);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 32px 16px 64px;
+    }
+
+    header {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+
+    @media (min-width: 768px) {
+      header {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+      }
+    }
+
+    .id-block {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .name {
+      font-size: clamp(2.1rem, 4vw, 2.6rem);
+      font-weight: 700;
+      letter-spacing: 0.04em;
+    }
+
+    .title {
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+    }
+
+    .location {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .pill-link {
+      font-size: 0.85rem;
+      padding: 6px 12px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.6);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pill-link span {
+      font-size: 0.9rem;
+    }
+
+    .pill-link:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .tagline {
+      max-width: 420px;
+      font-size: 0.95rem;
+      color: var(--text-muted);
+    }
+
+    main {
+      display: grid;
+      grid-template-columns: minmax(0, 2.3fr) minmax(0, 1.6fr);
+      gap: 22px;
+    }
+
+    @media (max-width: 900px) {
+      main {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    section {
+      margin-bottom: 20px;
+    }
+
+    .section-title {
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .card {
+      background: radial-gradient(circle at top left, #111827 0, #020617 55%);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      padding: 18px 18px 16px;
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(16px);
+    }
+
+    .pill-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin: 6px 0 0;
+    }
+
+    .pill {
+      font-size: 0.8rem;
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: rgba(15, 23, 42, 0.9);
+      border: 1px solid rgba(148, 163, 184, 0.45);
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .pill-strong {
+      color: var(--accent);
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .project {
+      margin-bottom: 14px;
+    }
+
+    .project:last-child {
+      margin-bottom: 0;
+    }
+
+    .project-title-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      align-items: baseline;
+    }
+
+    .project-title {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    .project-meta {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .project-body {
+      margin-top: 6px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .project-links {
+      margin-top: 6px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      font-size: 0.85rem;
+    }
+
+    .project-pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border-subtle);
+      background: rgba(15, 23, 42, 0.7);
+    }
+
+    .project-pill:hover {
+      border-color: var(--accent);
+      background: var(--accent-soft);
+    }
+
+    .two-col-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 8px 14px;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .two-col-list strong {
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    .bullet {
+      position: relative;
+      padding-left: 14px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    .bullet::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.95rem;
+    }
+
+    .badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .badge {
+      font-size: 0.78rem;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148, 163, 184, 0.5);
+      color: var(--text-muted);
+    }
+
+    footer {
+      margin-top: 26px;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="id-block">
+        <div class="title">Data & Software</div>
+        <div class="name">Natnael Feleke</div>
+        <div class="location">Hyattsville, MD · Open to remote & hybrid roles</div>
+        <div class="links">
+          <a class="pill-link" href="mailto:natyfeleke00@gmail.com">
+            <span>✉️</span><span>Email</span>
+          </a>
+          <a class="pill-link" href="#" target="_blank">
+            <span>🌐</span><span>Portfolio</span>
+          </a>
+          <a class="pill-link" href="#" target="_blank">
+            <span>💻</span><span>GitHub</span>
+          </a>
+          <a class="pill-link" href="#" target="_blank">
+            <span>🔗</span><span>LinkedIn</span>
+          </a>
+        </div>
+      </div>
+      <p class="tagline">
+        Computer Science graduate with Security+ certification who designed, shipped,
+        and maintains a production Android dating app on Google Play. Targeting Data
+        Engineering, BI, and technical roles focused on building reliable systems and
+        solving real-world problems.
+      </p>
+    </header>
+
+    <main>
+      <!-- LEFT COLUMN -->
+      <div>
+        <!-- FEATURED PROJECT -->
+        <section>
+          <h2 class="section-title">Featured</h2>
+          <div class="card">
+            <div class="project">
+              <div class="project-title-row">
+                <div class="project-title">Android Dating App</div>
+                <div class="project-meta">React Native · Expo · Firebase</div>
+              </div>
+              <div class="project-body">
+                Modern Android dating app with swipe, chat, filters, online presence,
+                and safety controls, built and deployed end to end and live on Google Play.
+              </div>
+              <div class="pill-row">
+                <span class="pill pill-strong">100+ installs</span>
+                <span class="pill">50+ registered users</span>
+                <span class="pill">Real-time chat</span>
+                <span class="pill">Online status</span>
+                <span class="pill">Block & report</span>
+                <span class="pill">Profile privacy</span>
+              </div>
+              <div class="project-links">
+                <a class="project-pill" href="#" target="_blank">▶ Demo video</a>
+                <a class="project-pill" href="#" target="_blank">Google Play listing</a>
+              </div>
+              <ul style="margin-top: 8px;">
+                <li class="bullet">
+                  Led the full lifecycle - design, configuration, debugging, testing, and Play Console release.
+                </li>
+                <li class="bullet">
+                  Used Firebase Authentication and Cloud Firestore (React Native SDK) for secure auth and data.
+                </li>
+                <li class="bullet">
+                  Debugged crashes using error logs, minimal repro cases, and targeted try-catch instrumentation.
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- OTHER PROJECTS -->
+        <section>
+          <h2 class="section-title">Projects</h2>
+          <div class="card">
+            <div class="project">
+              <div class="project-title-row">
+                <div class="project-title">Buffer Overflow Detector</div>
+                <div class="project-meta">C++ · Qt Creator</div>
+              </div>
+              <div class="project-body">
+                Desktop app that uses regex-based static analysis to detect buffer overflows in C and C++ code,
+                with a Qt GUI for early secure-code checks.
+              </div>
+            </div>
+
+            <div class="project">
+              <div class="project-title-row">
+                <div class="project-title">Android Trading App</div>
+                <div class="project-meta">React Native · Node.js</div>
+              </div>
+              <div class="project-body">
+                Full-stack peer-to-peer trading app with authentication, search filters, and responsive UI for local item exchange.
+              </div>
+            </div>
+
+            <div class="project">
+              <div class="project-title-row">
+                <div class="project-title">Phrase-Based Movie Finder</div>
+                <div class="project-meta">Vue.js · Node.js</div>
+              </div>
+              <div class="project-body">
+                Web app that finds movie titles using user-entered phrases and regex against a large title dataset.
+              </div>
+            </div>
+
+            <div class="project">
+              <div class="project-title-row">
+                <div class="project-title">Image-Based Movie Finder</div>
+                <div class="project-meta">Flask · Python</div>
+              </div>
+              <div class="project-body">
+                Image upload tool that uses search signals and regex to match screenshots to movies, enabling visual discovery.
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div>
+        <!-- SKILLS -->
+        <section>
+          <h2 class="section-title">Skills</h2>
+          <div class="card">
+            <div class="two-col-list">
+              <div><strong>Languages</strong><br />Python, JavaScript/TypeScript, C++, Java</div>
+              <div><strong>Mobile/Web</strong><br />React Native, Expo, Vue.js, HTML, CSS</div>
+              <div><strong>Backend & APIs</strong><br />Node.js, Flask, REST APIs, JSON</div>
+              <div><strong>Data</strong><br />SQL, data modeling basics, data cleaning</div>
+              <div><strong>Cloud & Firebase</strong><br />Auth, Firestore, app config</div>
+              <div><strong>Security & Networking</strong><br />Wireshark, Nmap, Security+</div>
+              <div><strong>Tools</strong><br />Git, GitHub, VS Code, Android Studio</div>
+              <div><strong>Systems</strong><br />Windows, Linux</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- EDUCATION -->
+        <section>
+          <h2 class="section-title">Education</h2>
+          <div class="card">
+            <p class="bullet">
+              B.Sc. Computer Science - Bowie State University, Dec 2024
+            </p>
+            <p class="bullet">
+              Associate degree (transferred) - Montgomery College, Takoma Park
+            </p>
+          </div>
+        </section>
+
+        <!-- CERTS & STRENGTHS -->
+        <section>
+          <h2 class="section-title">Certifications & Strengths</h2>
+          <div class="card">
+            <p class="bullet">CompTIA Security+, 2024</p>
+            <div class="badge-row">
+              <span class="badge">Problem solving</span>
+              <span class="badge">Debugging</span>
+              <span class="badge">Fast learner</span>
+              <span class="badge">Analytical thinking</span>
+              <span class="badge">Team collaboration</span>
+              <span class="badge">End-to-end ownership</span>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      Built with plain HTML & CSS. You are seeing the live resume-style portfolio of Natnael Feleke.
+    </footer>
+  </div>
+</body>
+</html>
