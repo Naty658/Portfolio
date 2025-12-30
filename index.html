@@ -4,307 +4,324 @@
   <meta charset="UTF-8" />
   <title>Natnael Feleke - Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
+
   <style>
-    :root {
-      --bg: #050816;
-      --bg-alt: #0b1020;
-      --card: #111827;
-      --accent: #38bdf8;
-      --accent-soft: rgba(56, 189, 248, 0.15);
-      --text-main: #f9fafb;
-      --text-muted: #9ca3af;
-      --border-subtle: rgba(148, 163, 184, 0.35);
-      --radius-xl: 18px;
-      --shadow-soft: 0 18px 45px rgba(15, 23, 42, 0.75);
+    :root{
+      /* Light, premium palette */
+      --bg: #f6f7fb;
+      --bg2: #ffffff;
+      --card: #ffffff;
+      --text: #0b1220;
+      --muted: rgba(11, 18, 32, 0.62);
+      --muted2: rgba(11, 18, 32, 0.42);
+      --border: rgba(11, 18, 32, 0.12);
+      --border2: rgba(11, 18, 32, 0.08);
+
+      --accent: #2563eb;
+      --accent-soft: rgba(37, 99, 235, 0.10);
+
+      --radius: 18px;
+      --radius-sm: 14px;
+
+      --shadow: 0 18px 50px rgba(11, 18, 32, 0.10);
+      --shadow2: 0 10px 28px rgba(11, 18, 32, 0.08);
+
+      --max: 1080px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    *{ box-sizing:border-box; margin:0; padding:0; }
+    html, body{ height:100%; }
 
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: radial-gradient(circle at top, #111827 0, #020617 45%, #000 100%);
-      color: var(--text-main);
-      line-height: 1.6;
+    body{
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color: var(--text);
+      background:
+        radial-gradient(900px 500px at 12% 0%, rgba(37,99,235,0.10) 0%, rgba(37,99,235,0.00) 55%),
+        radial-gradient(800px 420px at 88% 10%, rgba(99,102,241,0.10) 0%, rgba(99,102,241,0.00) 55%),
+        linear-gradient(180deg, var(--bg) 0%, #ffffff 60%, var(--bg) 100%);
+      line-height: 1.55;
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
     }
 
-    a {
-      color: var(--accent);
+    a{
+      color: var(--text);
       text-decoration: none;
     }
+    a:hover{ color: var(--accent); }
 
-    a:hover {
-      text-decoration: underline;
-    }
-
-    .page {
-      max-width: 1100px;
+    .page{
+      max-width: var(--max);
       margin: 0 auto;
-      padding: 32px 16px 64px;
+      padding: 44px 18px 70px;
     }
 
-    header {
-      display: flex;
+    /* Header */
+    header{
+      display:flex;
       flex-direction: column;
-      gap: 16px;
-      margin-bottom: 32px;
+      gap: 18px;
+      margin-bottom: 26px;
     }
-
-    @media (min-width: 768px) {
-      header {
+    @media (min-width: 860px){
+      header{
         flex-direction: row;
+        align-items: flex-start;
         justify-content: space-between;
-        align-items: center;
+        gap: 22px;
       }
     }
 
-    .id-block {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
+    .id-block{ display:flex; flex-direction:column; gap: 8px; }
 
-    .name {
-      font-size: clamp(2.1rem, 4vw, 2.6rem);
-      font-weight: 700;
-      letter-spacing: 0.04em;
-    }
-
-    .title {
-      font-size: 0.95rem;
+    .kicker{
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
-      color: var(--accent);
+      color: var(--muted);
     }
 
-    .location {
-      font-size: 0.9rem;
-      color: var(--text-muted);
+    .name{
+      font-size: clamp(2.15rem, 3.6vw, 2.75rem);
+      font-weight: 750;
+      letter-spacing: -0.02em;
+      line-height: 1.05;
     }
 
-    .links {
-      display: flex;
+    .location{
+      font-size: 0.94rem;
+      color: var(--muted);
+    }
+
+    .links{
+      display:flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 4px;
+      margin-top: 6px;
     }
 
-    .pill-link {
-      font-size: 0.85rem;
-      padding: 6px 12px;
+    .pill-link{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 12px;
       border-radius: 999px;
-      border: 1px solid var(--border-subtle);
-      background: rgba(15, 23, 42, 0.6);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .pill-link span {
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.75);
+      box-shadow: 0 1px 0 rgba(11,18,32,0.04);
       font-size: 0.9rem;
+      color: var(--text);
+      transition: transform .15s ease, border-color .15s ease, background .15s ease, box-shadow .15s ease;
+    }
+    .pill-link:hover{
+      border-color: rgba(37,99,235,0.32);
+      background: #fff;
+      box-shadow: var(--shadow2);
+      transform: translateY(-1px);
+      color: var(--text);
     }
 
-    .pill-link:hover {
-      border-color: var(--accent);
-      background: var(--accent-soft);
+    .tagline{
+      max-width: 520px;
+      color: var(--muted);
+      font-size: 0.98rem;
+      padding-top: 2px;
     }
 
-    .tagline {
-      max-width: 420px;
-      font-size: 0.95rem;
-      color: var(--text-muted);
+    /* Layout */
+    main{
+      display:grid;
+      grid-template-columns: minmax(0, 2.25fr) minmax(0, 1.45fr);
+      gap: 18px;
+      align-items: start;
+    }
+    @media (max-width: 940px){
+      main{ grid-template-columns: 1fr; }
     }
 
-    main {
-      display: grid;
-      grid-template-columns: minmax(0, 2.3fr) minmax(0, 1.6fr);
-      gap: 22px;
-    }
+    section{ margin-bottom: 18px; }
 
-    @media (max-width: 900px) {
-      main {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    section {
-      margin-bottom: 20px;
-    }
-
-    .section-title {
-      font-size: 0.85rem;
+    .section-title{
+      font-size: 0.78rem;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
-      letter-spacing: 0.18em;
-      color: var(--text-muted);
-      margin-bottom: 10px;
+      color: var(--muted2);
+      margin: 0 0 10px 6px;
     }
 
-    .card {
-      background: radial-gradient(circle at top left, #111827 0, #020617 55%);
-      border-radius: var(--radius-xl);
-      border: 1px solid var(--border-subtle);
+    .card{
+      background: rgba(255,255,255,0.82);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(10px);
       padding: 18px 18px 16px;
-      box-shadow: var(--shadow-soft);
-      backdrop-filter: blur(16px);
     }
 
-    .pill-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin: 6px 0 0;
+    /* Projects */
+    .project{ padding: 2px 0 14px; }
+    .project:last-child{ padding-bottom: 2px; }
+
+    .project + .project{
+      border-top: 1px solid var(--border2);
+      padding-top: 16px;
+      margin-top: 2px;
     }
 
-    .pill {
-      font-size: 0.8rem;
-      padding: 4px 9px;
-      border-radius: 999px;
-      background: rgba(15, 23, 42, 0.9);
-      border: 1px solid rgba(148, 163, 184, 0.45);
-      color: var(--text-muted);
-      white-space: nowrap;
-    }
-
-    .pill-strong {
-      color: var(--accent);
-      border-color: var(--accent);
-      background: var(--accent-soft);
-    }
-
-    .project {
-      margin-bottom: 14px;
-    }
-
-    .project:last-child {
-      margin-bottom: 0;
-    }
-
-    .project-title-row {
-      display: flex;
+    .project-title-row{
+      display:flex;
       justify-content: space-between;
-      gap: 8px;
+      gap: 10px;
       align-items: baseline;
+      flex-wrap: wrap;
     }
 
-    .project-title {
-      font-size: 1rem;
-      font-weight: 600;
+    .project-title{
+      font-size: 1.02rem;
+      font-weight: 700;
+      letter-spacing: -0.01em;
     }
 
-    .project-meta {
-      font-size: 0.8rem;
-      color: var(--text-muted);
+    .project-meta{
+      font-size: 0.76rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      letter-spacing: 0.16em;
+      color: var(--muted2);
     }
 
-    .project-body {
-      margin-top: 6px;
-      font-size: 0.9rem;
-      color: var(--text-muted);
+    .project-body{
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 0.94rem;
     }
 
-    .project-links {
-      margin-top: 6px;
-      display: flex;
+    .pill-row{
+      display:flex;
       flex-wrap: wrap;
       gap: 8px;
-      font-size: 0.85rem;
+      margin-top: 10px;
     }
 
-    .project-pill {
-      padding: 4px 10px;
+    .pill{
+      font-size: 0.82rem;
+      padding: 6px 10px;
       border-radius: 999px;
-      border: 1px solid var(--border-subtle);
-      background: rgba(15, 23, 42, 0.7);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: rgba(255,255,255,0.85);
     }
 
-    .project-pill:hover {
-      border-color: var(--accent);
+    .pill-strong{
+      color: var(--accent);
+      border-color: rgba(37,99,235,0.30);
       background: var(--accent-soft);
     }
 
-    .two-col-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 8px 14px;
-      font-size: 0.88rem;
-      color: var(--text-muted);
-    }
-
-    .two-col-list strong {
-      color: var(--text-main);
-      font-weight: 500;
-    }
-
-    ul {
-      list-style: none;
-    }
-
-    .bullet {
-      position: relative;
-      padding-left: 14px;
-      font-size: 0.9rem;
-      color: var(--text-muted);
-    }
-
-    .bullet::before {
-      content: "•";
-      position: absolute;
-      left: 0;
-      color: var(--accent);
-      font-size: 0.95rem;
-    }
-
-    .badge-row {
-      display: flex;
+    .project-links{
+      margin-top: 10px;
+      display:flex;
       flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 6px;
+      gap: 10px;
+      font-size: 0.9rem;
     }
 
-    .badge {
-      font-size: 0.78rem;
-      padding: 3px 8px;
+    .project-pill{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 12px;
       border-radius: 999px;
-      border: 1px solid rgba(148, 163, 184, 0.5);
-      color: var(--text-muted);
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.75);
+      color: var(--text);
+      transition: transform .15s ease, border-color .15s ease, box-shadow .15s ease;
+    }
+    .project-pill:hover{
+      border-color: rgba(37,99,235,0.32);
+      box-shadow: var(--shadow2);
+      transform: translateY(-1px);
+      color: var(--text);
     }
 
-    footer {
+    /* Lists */
+    ul{ list-style:none; }
+
+    .bullet{
+      position: relative;
+      padding-left: 18px;
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 0.93rem;
+    }
+
+    .bullet::before{
+      content: "";
+      position:absolute;
+      left: 3px;
+      top: 0.62em;
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      opacity: 0.75;
+      transform: translateY(-50%);
+    }
+
+    /* Right column content */
+    .two-col-list{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 10px 14px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+
+    .two-col-list strong{
+      color: var(--text);
+      font-weight: 650;
+    }
+
+    .badge-row{
+      display:flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .badge{
+      font-size: 0.82rem;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      background: rgba(255,255,255,0.75);
+    }
+
+    footer{
       margin-top: 26px;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      text-align: center;
+      text-align:center;
+      font-size: 0.82rem;
+      color: var(--muted2);
     }
   </style>
 </head>
+
 <body>
   <div class="page">
     <header>
       <div class="id-block">
-        <div class="title">Data & Software</div>
+        <div class="kicker">Data &amp; Software</div>
         <div class="name">Natnael Feleke</div>
-        <div class="location">Hyattsville, MD · Open to remote & hybrid roles</div>
+        <div class="location">Hyattsville, MD · Open to remote &amp; hybrid roles</div>
+
         <div class="links">
-          <a class="pill-link" href="mailto:natyfeleke00@gmail.com">
-            <span>✉️</span><span>Email</span>
-          </a>
-          <a class="pill-link" href="#" target="_blank">
-            <span>🌐</span><span>Portfolio</span>
-          </a>
-          <a class="pill-link" href="#" target="_blank">
-            <span>💻</span><span>GitHub</span>
-          </a>
-          <a class="pill-link" href="#" target="_blank">
-            <span>🔗</span><span>LinkedIn</span>
-          </a>
+          <a class="pill-link" href="mailto:natyfeleke00@gmail.com"><span>✉️</span><span>Email</span></a>
+          <a class="pill-link" href="#" target="_blank" rel="noreferrer"><span>🌐</span><span>Portfolio</span></a>
+          <a class="pill-link" href="#" target="_blank" rel="noreferrer"><span>💻</span><span>GitHub</span></a>
+          <a class="pill-link" href="#" target="_blank" rel="noreferrer"><span>🔗</span><span>LinkedIn</span></a>
         </div>
       </div>
+
       <p class="tagline">
         Computer Science graduate with Security+ certification who designed, shipped,
         and maintains a production Android dating app on Google Play. Targeting Data
@@ -325,32 +342,30 @@
                 <div class="project-title">Android Dating App</div>
                 <div class="project-meta">React Native · Expo · Firebase</div>
               </div>
+
               <div class="project-body">
                 Modern Android dating app with swipe, chat, filters, online presence,
                 and safety controls, built and deployed end to end and live on Google Play.
               </div>
+
               <div class="pill-row">
                 <span class="pill pill-strong">100+ installs</span>
                 <span class="pill">50+ registered users</span>
                 <span class="pill">Real-time chat</span>
                 <span class="pill">Online status</span>
-                <span class="pill">Block & report</span>
+                <span class="pill">Block &amp; report</span>
                 <span class="pill">Profile privacy</span>
               </div>
+
               <div class="project-links">
-                <a class="project-pill" href="#" target="_blank">▶ Demo video</a>
-                <a class="project-pill" href="#" target="_blank">Google Play listing</a>
+                <a class="project-pill" href="#" target="_blank" rel="noreferrer">▶ Demo video</a>
+                <a class="project-pill" href="#" target="_blank" rel="noreferrer">Google Play listing</a>
               </div>
-              <ul style="margin-top: 8px;">
-                <li class="bullet">
-                  Led the full lifecycle - design, configuration, debugging, testing, and Play Console release.
-                </li>
-                <li class="bullet">
-                  Used Firebase Authentication and Cloud Firestore (React Native SDK) for secure auth and data.
-                </li>
-                <li class="bullet">
-                  Debugged crashes using error logs, minimal repro cases, and targeted try-catch instrumentation.
-                </li>
+
+              <ul style="margin-top: 6px;">
+                <li class="bullet">Led the full lifecycle - design, configuration, debugging, testing, and Play Console release.</li>
+                <li class="bullet">Used Firebase Authentication and Cloud Firestore (React Native SDK) for secure auth and data.</li>
+                <li class="bullet">Debugged crashes using error logs, minimal repro cases, and targeted try-catch instrumentation.</li>
               </ul>
             </div>
           </div>
@@ -413,10 +428,10 @@
             <div class="two-col-list">
               <div><strong>Languages</strong><br />Python, JavaScript/TypeScript, C++, Java</div>
               <div><strong>Mobile/Web</strong><br />React Native, Expo, Vue.js, HTML, CSS</div>
-              <div><strong>Backend & APIs</strong><br />Node.js, Flask, REST APIs, JSON</div>
+              <div><strong>Backend &amp; APIs</strong><br />Node.js, Flask, REST APIs, JSON</div>
               <div><strong>Data</strong><br />SQL, data modeling basics, data cleaning</div>
-              <div><strong>Cloud & Firebase</strong><br />Auth, Firestore, app config</div>
-              <div><strong>Security & Networking</strong><br />Wireshark, Nmap, Security+</div>
+              <div><strong>Cloud &amp; Firebase</strong><br />Auth, Firestore, app config</div>
+              <div><strong>Security &amp; Networking</strong><br />Wireshark, Nmap, Security+</div>
               <div><strong>Tools</strong><br />Git, GitHub, VS Code, Android Studio</div>
               <div><strong>Systems</strong><br />Windows, Linux</div>
             </div>
@@ -427,18 +442,14 @@
         <section>
           <h2 class="section-title">Education</h2>
           <div class="card">
-            <p class="bullet">
-              B.Sc. Computer Science - Bowie State University, Dec 2024
-            </p>
-            <p class="bullet">
-              Associate degree (transferred) - Montgomery College, Takoma Park
-            </p>
+            <p class="bullet">B.Sc. Computer Science - Bowie State University, Dec 2024</p>
+            <p class="bullet">Associate degree (transferred) - Montgomery College, Takoma Park</p>
           </div>
         </section>
 
         <!-- CERTS & STRENGTHS -->
         <section>
-          <h2 class="section-title">Certifications & Strengths</h2>
+          <h2 class="section-title">Certifications &amp; Strengths</h2>
           <div class="card">
             <p class="bullet">CompTIA Security+, 2024</p>
             <div class="badge-row">
@@ -455,8 +466,9 @@
     </main>
 
     <footer>
-      Built with plain HTML & CSS. You are seeing the live resume-style portfolio of Natnael Feleke.
+      Built with plain HTML &amp; CSS. You are seeing the live resume-style portfolio of Natnael Feleke.
     </footer>
   </div>
 </body>
 </html>
+
